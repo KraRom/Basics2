@@ -1,0 +1,277 @@
+@font-face {
+    font-family: 'TT Lakes';
+    src: url('./assets/fonts/TTLakes-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TT Lakes';
+    src:
+    url('./assets/fonts/TTLakes-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TT Lakes';
+    src: url('./assets/fonts/TTLakes-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+/* Сброс и базовые */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    /*max-width: 100vw;*/
+    max-width: 1120px;
+    font-family: 'TT Lakes', Arial, sans-serif;
+    background: #F8F8F8;
+    color: #1B1C21;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    padding: 18px 16px 18px 16px;
+    border-bottom: 1px solid #EAEAEA;
+}
+.header__icon_burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.header__logo {
+    height: 51px;
+    width: 97px;
+}
+.header__icon {
+    display: none;
+}
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+.header__main-actions {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.header__main-actions span {
+    display: none;
+}
+.header__divider_left {
+   display: none;
+}
+.header__divider_right {
+    width: 2px;
+    height: 32px;
+    margin-right: 4px;
+    display: block;
+}
+.services__main-title {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.services__title {
+    margin: 24px 16px;
+}
+.services__content {
+    width: 100%;
+    background: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.services__menu {
+    overflow-x: auto;
+}
+.services__menu-list {
+    margin: 0 0 24px 16px;
+    display: flex;
+    list-style: none;
+    min-width: 1180px;
+    /*overflow-x: auto;*/
+    scrollbar-width: none;
+}
+.services__menu-item {
+    flex: 0 0 auto;
+}
+.services__menu-btn {
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: #7E7E82;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+.services__menu-item_active .services__menu-btn {
+    background: #fff;
+    border-color: #B8FFEC;
+    color: #1B1C21;
+}
+.services__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.services__desc {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.services__desc-text_first {
+    color: #1B1C21;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.services__desc-text_second {
+    display: none;
+}
+.services__readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    color: #1B1C21;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+.services__readmore-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+.services__readmore:hover {
+    color: #299166;
+}
+.services__image img {
+    width: 100%;
+    max-width: none;
+    display: block;
+    object-fit: cover; /*заполняет область и обрезается по краям*/
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .header__icon {
+        background: none;
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .header__divider_left {
+        width: 2px;
+        height: 32px;
+        margin-right: 4px;
+        display: block;
+    }
+    .services__menu {
+        overflow-x: visible;
+        width: 100%;
+    }
+    .services__menu-list {
+        display: flex;
+        list-style: none;
+        width: 100%;
+        min-width: 0;        /* чтобы не вылазили */
+    }
+    .services__main {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 32px;
+    }
+    .services__desc,
+    .services__image {
+        flex: 1 1 0;    /* обе колонки занимают поровну */
+        min-width: 0;   /* сжимается, чтобы не ломался макет */
+    }
+    .services__desc-text_second {
+        display: block;
+        color: #1B1C21;
+        font-size: 16px;
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1120px) {
+    body {
+        max-width: 1120px;
+        margin: 0 auto; /* центрируем */
+        position: relative;
+    }
+    .header {
+        display: contents; /*перестаёт быть блочным, оставляя ток детей*/
+        position: relative; /*Создаёт новый контекст позиционирования для детей*/
+    }
+
+   .header > :not(.header__actions) {  /*прямые потомки элемента с классом .header — кроме тех, у которых этот класс*/
+        display: none !important;
+    }
+    /* Контейнер с кнопками */
+    .header__actions {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        gap: 12px; /* расстояние между кнопками */
+    }
+    .header__actions > :not(.header__main-actions) {
+        display: none !important;
+    }
+    .header__main-actions {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .header__main-actions span {
+        display: block;
+        font-family: 'TT Lakes', Arial, sans-serif;
+        color: #1B1C21;
+        font-size:  16px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+    .services__menu {
+        width: 100%;
+        overflow: visible; /* чтобы не вылазило */
+        padding: 0 16px;
+    }
+    .services__menu-list {
+        margin: 0;
+        min-width: 0;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: space-between; /* распределение кнопок */
+    }
+    .services__menu-item {
+        flex: 0 0 auto; /* фиксированная ширина кнопок */
+    }
+    .services__menu-btn {
+        padding: 12px 14px;
+    }
+
+}
