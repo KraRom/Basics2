@@ -26,13 +26,23 @@ textarea {
     color: inherit;
 }
 body {
+    margin-left: 320px;
+    max-width: max-content;
     font-family: 'TT Lakes', Arial, sans-serif;
     background: #F8F8F8;
     color: #1B1C21;
     font-size: 16px;
     line-height: 1.4;
+    overflow-x: hidden;
+}
+button {
+    transition: color 0.3s ease;
+}
+button:hover {
+    color: #41F6D7;
 }
 .header {
+    /*margin-left: 0px;*/
     display: flex;
     align-items: center;
     height: 88px;
@@ -40,6 +50,8 @@ body {
     background: #fff;
     /*padding: 18px 16px 18px 16px;*/
     border-bottom: 1px solid #EAEAEA;
+    position: relative;
+    overflow: hidden;
 }
 .header::before,
 .header::after {
@@ -64,6 +76,7 @@ body {
     align-items: center;
     gap: 16px;
     margin-left: auto;
+    position: relative;
 }
 .header__main-actions {
     display: flex;
@@ -84,9 +97,142 @@ body {
     margin-right: 4px;
     display: block;
 }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    background: #fff;
+    border-right: 1px solid #EAEAEA;
+    box-shadow: 16px 0 52px rgba(14, 24, 80, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 36px;
+}
+.sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    min-height: 90px;
+}
+.sidebar__top-container {
+    display: flex;
+    gap: 16px;
+}
+.sidebar__top-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-left: 24px;
+    list-style: none;
+}
+.sidebar__menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.sidebar__menu-button_active {
+    color: #7E7E82;
+}
+.sidebar__main-button {
+    display: flex;
+    align-items: center;
+}
+.sidebar__highlight {
+    position: fixed;
+    left: 0;
+}
+.sidebar__highlight img {
+    width: 4px;
+    height: 32px;
+}
+.sidebar__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 16px;
+    height: 380px;
+}
+.sidebar__footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    gap: 16px;
+}
+.sidebar__low-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.sidebar__address {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-weight: 500;
+    color: #1B1C21;
+}
+.sidebar__address_email {
+    color: #1B1C21;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 500;
+    width: 155px;
+    display: flex;
+    justify-content: center;
+}
+.sidebar__address_tel {
+    color: #1B1C21;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 24px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+.sidebar__language {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.sidebar__language {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-left: 23px;
+    height: 80px;
+}
+.sidebar__language_ru {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #7E7E82;
+}
+.sidebar__language_en,
+.sidebar__language_ch {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .services {
+    /*margin-left: 320px;*/
     max-width: 1120px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    overflow-x: hidden;
 }
 .services__main-title {
     display: flex;
@@ -165,6 +311,10 @@ body {
     background: #fff;
     border-color: #B8FFEC;
     color: #7E7E82;
+    transition: color 0.3s ease;
+}
+.services__menu-item_active .services__menu-btn:hover {
+    color: #41F6D7;
 }
 .services__main {
     display: flex;
@@ -220,8 +370,6 @@ body {
 
 @media (min-width: 768px) {
     body {
-        max-width: 1120px;
-        margin: 0 auto; /* центрируем */
         position: relative;
     }
     .header__icon {
@@ -274,7 +422,6 @@ body {
 
 @media (min-width: 1120px) {
     .header {
-
         display: contents; /*перестаёт быть блочным, оставляя ток детей*/
         position: relative; /*Создаёт новый контекст позиционирования для детей*/
     }
@@ -308,6 +455,10 @@ body {
         font-size:  16px;
         font-weight: 500;
         line-height: 24px;
+        transition: color 0.3s ease;
+    }
+    .header__main-actions span:hover {
+        color: #41F6D7;
     }
     .services__main-title {
         /*height: 82px;*/

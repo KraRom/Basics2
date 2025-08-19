@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,61 @@
     <button class="header__main-actions"><span>Статус ремонта</span><img src="./assets/images/checkstatus.svg" alt="Статус ремонта"></button>
   </nav>
 </header>
+
+<nav class="sidebar">
+  <header class="sidebar__header">
+    <div class="sidebar__top-container">
+      <button class="sidebar__top-icon"><img src="./assets/images/close.svg" alt="Закрыть меню"></button>
+      <img class="sidebar__top-icon" src="./assets/images/Group.svg" alt="Логотип">
+    </div>
+    <button class="sidebar__top-icon"><img src="./assets/images/search.svg" alt="Поиск"></button>
+  </header>
+  <div class="sidebar__content">
+    <ul class="sidebar__menu">
+      <li class="sidebar__menu-item sidebar__main-button">
+        <div class="sidebar__highlight"><img src="./assets/images/highlight.svg" alt=""></div>
+          <button class="sidebar__menu-button sidebar__menu-button_active">Ремонт техники</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Услуги и сервисы</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Корпоративным клиентам</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Продавцам техники</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Партнерам</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Производителям</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Наши сервисные центры</button>
+      </li>
+      <li class="sidebar__menu-item">
+        <button class="sidebar__menu-button">Контакты</button>
+      </li>
+    </ul>
+  </div>
+  <footer class="sidebar__footer">
+    <div class="sidebar__footer-icon">
+      <button class="sidebar__low-icon"><img src="./assets/images/call.svg" alt="Позвонить"></button>
+      <button class="sidebar__low-icon"><img src="./assets/images/chat.svg" alt="Чат"></button>
+      <button class="sidebar__low-icon"><img src="./assets/images/profile.svg" alt="Профиль"></button>
+    </div>
+    <address class="sidebar__address">
+      <a class="sidebar__address_email" href="mailto:mail@cps.com">mail@cps.com</a>
+      <a class="sidebar__address_tel" href="tel:88008908900">8 800 890 8900</a>
+    </address>
+    <div class="sidebar__language">
+      <button class="sidebar__language_ru">RU</button>
+      <button class="sidebar__language_en">EN</button>
+      <button class="sidebar__language_ch">CH</button>
+    </div>
+  </footer>
+</nav>
 
 <main class="services">
   <div class="services__container">
