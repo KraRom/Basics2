@@ -18,6 +18,9 @@
 }
 /* Сброс и базовые */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 button,
 input,
 select,
@@ -26,8 +29,9 @@ textarea {
     color: inherit;
 }
 body {
-    margin-left: 320px;
-    max-width: max-content;
+    /*margin-left: 320px; */
+    max-width: 100vw;
+    height: 100%;
     font-family: 'TT Lakes', Arial, sans-serif;
     background: #F8F8F8;
     color: #1B1C21;
@@ -40,7 +44,7 @@ button {
     transition: color 0.3s ease;
 }
 button:hover {
-    color: #41F6D7;
+    color: #7E7E82;
 }
 .header {
     /*margin-left: 0px;*/
@@ -99,19 +103,22 @@ button:hover {
     display: block;
 }
 .sidebar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 320px;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     background: #fff;
     border-right: 1px solid #EAEAEA;
     box-shadow: 16px 0 52px rgba(14, 24, 80, 0.2);
-    display: flex;
+    display: none; /* Изменить на flex */
     flex-direction: column;
     justify-content: space-between;
     gap: 62px;
     overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 10;
 }
 .sidebar__top {
     display: flex;
@@ -137,11 +144,12 @@ button:hover {
 .sidebar__menu {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
     padding-left: 24px;
     list-style: none;
 }
 .sidebar__menu-button {
+    height: 32px;
     background: none;
     border: none;
     cursor: pointer;
@@ -153,14 +161,16 @@ button:hover {
 .sidebar__main-button {
     display: flex;
     align-items: center;
+    gap: 16px;
 }
 .sidebar__highlight {
-    position: fixed;
+    position: absolute;
     left: 0;
-}
-.sidebar__highlight img {
-    width: 4px;
-    height: 32px;
+    width: 3px;
+    height: 70px;
+    background-color: #41F6D7;
+    border-radius: 2px;
+    transition: top 0.2s ease; /* плавное перемещение */
 }
 .sidebar__footer {
     display: flex;
@@ -237,9 +247,14 @@ button:hover {
 
 .services {
     /*margin-left: 320px;*/
-    max-width: 1120px;
+    max-width: 100vw;
     /*margin: 0 auto;*/
     overflow-x: hidden;
+}
+.services__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 .services__main-title {
     display: flex;
@@ -279,6 +294,7 @@ button:hover {
 }
 .services__menu-list {
     display: flex;
+    justify-content: space-between;
     flex-wrap: nowrap;
     list-style: none;
     gap: 16px;
@@ -318,10 +334,6 @@ button:hover {
     background: #fff;
     border-color: #B8FFEC;
     color: #7E7E82;
-    transition: color 0.3s ease;
-}
-.services__menu-item_active .services__menu-btn:hover {
-    color: #41F6D7;
 }
 .services__main {
     display: flex;
@@ -361,18 +373,92 @@ button:hover {
     transition: color 0.2s;
 }
 .services__readmore-icon {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     display: inline-block;
 }
 .services__readmore:hover {
-    color: #299166;
+    color: #7E7E82;
 }
 .services__image img {
     width: 100%;
     max-width: none;
     display: block;
     object-fit: cover; /*заполняет область и обрезается по краям*/
+}
+.services__header-title {
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    height: 56px;
+    color: #7E7E82;
+    background: linear-gradient(to right, #F8F8F8, #FFFFFF);
+    border-top:  1px solid #D9FFF5;
+}
+.services__brand-swiper {
+    position: relative;
+    overflow: hidden; /* чтобы слайды не вылазили */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1;
+}
+.services__brand-swiper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;   /* ширина градиента */
+    height: 100%;
+    pointer-events: none; /* чтобы не мешал кликам и свайпам */
+    background: linear-gradient(to left, #F8F8F8 40%, transparent);
+    z-index: 2;
+}
+.services__brand-swiper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, #F8F8F8 40%, transparent);
+    z-index: 2;
+}
+.services__swiper-slide {
+    flex: 0 0 auto; /* фикс ширины */
+}
+.services__swiper-wrapper {
+    display: flex;
+    padding-left: 24px;
+}
+.services__swiper-slide a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 72px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-decoration: none; /* убирает подчёркивание как у ссылки */
+}
+.services__swiper-slide_image {
+    max-width: 240px;
+    height: auto;
+    object-fit: contain;
+}
+.services__pagination {
+    /*margin-top: 16px;*/
+    text-align: center;
+
+}
+.services__brand-toggle {
+    display: none;
 }
 
 @media (min-width: 768px) {
@@ -425,17 +511,78 @@ button:hover {
     .services__content {
         gap: 24px;
     }
+    .services__brand-swiper {
+        overflow: visible; /* убираем ограничения слайдера */
+        max-width: 1120px;   /* ширина блока по макету */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap:  16px;
+    }
+    .services__brand-swiper::after {
+        display: none;
+    }
+    .services__brand-swiper::before {
+        display: none;
+    }
+    .services__swiper-wrapper {
+        display: flex;
+        padding-left: 0;
+        flex-wrap: wrap;
+        gap: 16px 24px;       /* вертикальный и горизонтальный отступы */
+        justify-content: center; /* верхние ряды */
+        max-height: calc(2 * (71px + 16px)); /* высота карточки + gap, умножаем на 2 строки */
+        overflow: hidden;
+        /*transition: max-height 0.3s ease;*/
+    }
+    .services__swiper-wrapper--expanded {
+        max-height: 2000px; /* большое значение, чтобы всё влезло */
+    }
+    .services__brand-toggle {
+        padding-left: 42px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        gap: 14px;
+    }
+    .services__brand-toggle .services__readmore-icon {
+        transition: transform 0.2s ease;
+    }
+
+    .services__brand-toggle--active .services__readmore-icon {
+        transform: rotate(180deg);
+    }
+
+    .services__swiper-slide {
+        flex: 0 0 240px; /* 4 карточки в ряд (на 1120px) */
+        max-width: 240px;
+    }
+
+    .services__pagination {
+        display: none;
+    }
 }
 
 @media (min-width: 1120px) {
+    body {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+    }
     .header {
         display: contents; /*перестаёт быть блочным, оставляя ток детей*/
         position: relative; /*Создаёт новый контекст позиционирования для детей*/
     }
 
-   .header > :not(.header__actions) {  /*прямые потомки элемента с классом .header — кроме тех, у которых этот класс*/
+    .header > :not(.header__actions) { /*прямые потомки элемента с классом .header — кроме тех, у которых этот класс*/
         display: none !important;
     }
+
     /* Контейнер с кнопками */
     .header__actions {
         position: absolute;
@@ -444,9 +591,11 @@ button:hover {
         display: flex;
         gap: 12px;
     }
+
     .header__actions > :not(.header__main-actions) {
         display: none !important;
     }
+
     .header__main-actions {
         background: none;
         border: none;
@@ -455,35 +604,44 @@ button:hover {
         align-items: center;
         gap: 8px;
     }
+
     .header__main-actions span {
         display: block;
         font-family: 'TT Lakes', Arial, sans-serif;
         color: #1B1C21;
-        font-size:  16px;
+        font-size: 16px;
         font-weight: 500;
         line-height: 24px;
         transition: color 0.3s ease;
     }
+
     .header__main-actions span:hover {
-        color: #41F6D7;
+        color: #7E7E82;
     }
-    .services__main-title {
-        /*height: 82px;*/
-        /*display: flex;*/
-        /*align-items: end;*/
-        /*padding-top: 18px;*/
-    }
-    .services__highlight {
-        padding-top: 50px;
-    }
-    .services__title {
-        /*padding: 24px 16px;*/
+
+    .sidebar {
         display: flex;
-        align-items: end;
     }
-    .services__container {
+    .services {
         display: flex;
         flex-direction: column;
         gap: 16px;
+    }
+
+    .services__highlight {
+        padding-top: 50px;
+    }
+
+    .services__title {
+        /*padding: 24px 16px;*/
+
+        display: flex;
+        align-items: end;
+    }
+
+    .services__container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
     }
 }

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CPS</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -33,7 +35,6 @@
     <div class="sidebar__content">
     <ul class="sidebar__menu">
       <li class="sidebar__menu-item sidebar__main-button">
-        <div class="sidebar__highlight"><img src="./assets/images/highlight.svg" alt=""></div>
           <button class="sidebar__menu-button sidebar__menu-button_active">Ремонт техники</button>
       </li>
       <li class="sidebar__menu-item">
@@ -58,6 +59,7 @@
         <button class="sidebar__menu-button">Контакты</button>
       </li>
     </ul>
+      <div class="sidebar__highlight"></div>
   </div>
   </div>
   <footer class="sidebar__footer">
@@ -79,11 +81,11 @@
 </nav>
 
 <main class="services">
+  <div class="services__main-title">
+    <div class="services__highlight"><img src="./assets/images/highlight.svg" alt=""></div>
+    <h1 class="services__title">Услуги и сервисы</h1>
+  </div>
   <div class="services__container">
-    <div class="services__main-title">
-      <div class="services__highlight"><img src="./assets/images/highlight.svg" alt=""></div>
-      <h1 class="services__title">Услуги и сервисы</h1>
-    </div>
     <section class="services__content">
       <nav class="services__menu" role="navigation">
         <ul class="services__menu-list">
@@ -117,7 +119,7 @@
               Мы успешно работаем с 1992 года и заслужили репутацию надёжного партнёра, что подтверждает большое количество постоянных клиентов. Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою очередь, советуют нас родным и близким.
             </p>
           </div>
-          <a href="#" class="services__readmore">
+          <a href="#!" class="services__readmore">
             <img src="./assets/images/icon.svg" alt="" class="services__readmore-icon">
             Читать далее
           </a>
@@ -127,7 +129,58 @@
         </div>
       </div>
     </section>
+    <section class="services__content">
+      <header class="services__header">
+        <h2 class="services__header-title">РЕМОНТ ТЕХНИКИ РАЗЛИЧНЫХ БРЕНДОВ</h2>
+      </header>
+      <div class="services__brand-swiper">
+        <div class="services__swiper-wrapper">
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/lenovo.png" alt="Логотип Lenovo"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/samsung.png" alt="Логотип Samsung"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/apple.png" alt="Логотип Apple"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/viewsonic.png" alt="Логотип ViewSonic"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/bosch.png" alt="Логотип Bosch"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/hp.png" alt="Логотип HP"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/acer.png" alt="Логотип Acer"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/sony.png" alt="Логотип Sony"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/lenovo.png" alt="Логотип Lenovo"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/samsung.png" alt="Логотип Samsung"></a>
+          </div>
+          <div class="services__swiper-slide">
+            <a href="#!"><img class="services__swiper-slide_image" src="./assets/Brands/apple.png" alt="Логотип Apple"></a>
+          </div>
+          <div class="services__swiper-slide"></div>
+        </div>
+        <button class="services__brand-toggle">
+          <img src="./assets/images/icon.svg" alt="" class="services__readmore-icon">
+          Показать все
+        </button>
+        <div class="services__pagination"></div>
+      </div>
+    </section>
+
   </div>
 </main>
+
+<script src="script.js"></script>
 </body>
 </html>
